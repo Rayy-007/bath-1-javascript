@@ -9,22 +9,24 @@ const fruits = [
 ];
 
 /** ----------- For Loop ------------- */
-// for (let i = 0; i < 10; i++) {
-//   console.log(i);
+// Iterate
+// for (let i = 0; i < fruits.length; i++) {
+//   console.log(fruits[i]);
+//   break;
 // }
 
 // for (initialization; condition; increment) {
 // }
 
 /** ----------- While Loop ------------- */
-// let i = 0;
+// let i = 20;
 // while (i < 10) {
-//   console.log(i);
-//   i++;
+//   console.log("Your name is incorrect!");
+//   i++; // exit code
 // }
 
 /** -----------  Do - While Loop ------------- */
-// let num = 0;
+// let num = 12;
 // do {
 //   console.log(num);
 //   num++;
@@ -36,8 +38,12 @@ const fruits = [
 // }
 
 /** ----------- For In  Loop ------------- */
-// const numbers = { num1: 1, num2: 2, num3: 3, num4: 4 };
+// const numbers = {
+//   name: "Min",
+//   age: 21,
+//   city: "MDY",
+// };
 
-// for (let key in numbers) {
-//   console.log(numbers[key]);
+// for (let index in fruits) {
+//   console.log(fruits[index]);
 // }
