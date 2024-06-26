@@ -1,5 +1,10 @@
 // Initialize the todo list
-let todos = [];
+let todos = [
+  {
+    description: "Homework",
+    completed: false,
+  },
+];
 
 // Function to add a new task
 function addTask(task) {
@@ -11,11 +16,11 @@ function addTask(task) {
 
 // Function to toggle the completion status of a task
 function toggleTaskCompletion(taskDescription) {
-  todos = todos.map((task) =>
-    task.description === taskDescription
-      ? { ...task, completed: !task.completed }
-      : task
-  );
+  todos.forEach((task) => {
+    if (task.description === taskDescription) {
+      task.completed = !task.completed;
+    }
+  });
 }
 
 // Function to remove a task
@@ -26,10 +31,10 @@ function removeTask(taskDescription) {
 // Example usage
 addTask("Buy groceries");
 addTask("Complete homework");
-console.log("Tasks after adding:", todos);
+// console.log( todos);
 
 toggleTaskCompletion("Buy groceries");
-console.log("Tasks after toggling completion:", todos);
+// console.log( todos);
 
 removeTask("Complete homework");
-console.log("Tasks after removing:", todos);
+// console.log(todos);

@@ -7,8 +7,6 @@ function addSubject(student, subject) {
   }
 }
 
-// Example usage:
-
 // Create a student object
 let student = {
   name: "John Doe",
@@ -17,26 +15,69 @@ let student = {
   subjects: ["Math", "Science"],
 };
 
-// Add a new subject
-addSubject(student, "History");
+// // Add a new subject
+// addSubject(student, "History");
 
-console.log(student.subjects); // Output: ["Math", "Science", "History"]
+// console.log(student.subjects);
 
-// Attempt to add an existing subject
-addSubject(student, "Math");
+// // Attempt to add an existing subject
+// addSubject(student, "Math");
+// console.log(student.subjects);
 
-console.log(student.subjects); // Output: ["Math", "Science", "History"]
+/* 
 
+
+Removing Subject
+
+
+
+*/
+
+// function removesubject(student, subject) {
+//   student.subjects = student.subjects.filter((sub) => {
+//     return sub !== subject;
+//   });
+// }
+// removesubject(student, "Math");
+// console.log(student);
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
 /** Case sensitivity */
 // function addSubject(student, subject) {
-//     // Convert subject to lowercase
-//     let lowerCaseSubject = subject.toLowerCase();
+//   // Convert subject to lowercase
+//   let lowerCaseSubject = subject.toLowerCase();
 
-//     // Check if any subject in the array matches case-insensitively
-//     if (!student.subjects.some(sub => sub.toLowerCase() === lowerCaseSubject)) {
-//         student.subjects.push(subject);
-//     }
+//   // Check if any subject in the array matches case-insensitively
+//   if (!student.subjects.some((sub) => sub.toLowerCase() === lowerCaseSubject)) {
+//     student.subjects.push(subject);
+//   }
 // }
+
+// addSubject(student, "hitstory");
+// addSubject(student, "Math");
+// console.log(student);
 
 /** Empty or Invalid Inputs */
 // function addSubject(student, subject) {
