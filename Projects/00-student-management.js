@@ -1,67 +1,33 @@
-// Define the function to add a subject to the student's list of subjects
-function addSubject(student, subject) {
-  // Check if the subject already exists in the student's subjects list
-  if (!student.subjects.includes(subject)) {
-    // Add the subject if it doesn't exist
-    student.subjects.push(subject);
-  }
-}
-
 // Create a student object
 let student = {
   name: "John Doe",
   age: 16,
   grade: 10,
-  subjects: ["Math", "Science"],
+  subjects: ["History", "Math"],
 };
 
-// // Add a new subject
+/** -------- Adding Subject ------- */
+function addSubject(student, subject) {
+  if (!student.subjects.includes(subject)) {
+    // Add the subject if it doesn't exist
+    student.subjects.push(subject);
+  }
+}
 // addSubject(student, "History");
-
 // console.log(student.subjects);
 
-// // Attempt to add an existing subject
-// addSubject(student, "Math");
-// console.log(student.subjects);
-
-/* 
-
-
-Removing Subject
-
-
-
-*/
-
-// function removesubject(student, subject) {
-//   student.subjects = student.subjects.filter((sub) => {
-//     return sub !== subject;
-//   });
-// }
-// removesubject(student, "Math");
-// console.log(student);
+/* ------ Removing Subject ------- */
+function removesubject(student, subject) {
+  student.subjects = student.subjects.filter((sub) => {
+    return sub !== subject;
+  }); // ["History"]
+}
+removesubject(student, "Math");
+console.log(student.subjects);
 
 /*
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Checking Extra Validation
 
 */
 /** Case sensitivity */
@@ -70,11 +36,13 @@ Removing Subject
 //   let lowerCaseSubject = subject.toLowerCase();
 
 //   // Check if any subject in the array matches case-insensitively
-//   if (!student.subjects.some((sub) => sub.toLowerCase() === lowerCaseSubject)) {
-//     student.subjects.push(subject);
-//   }
+//   // First way of checking Lowercase with (((Filter)))
+//   // student.subjects = student.subjects.filter((sub) => sub.toLowerCase() === lowerCaseSubject )
+//   // Second way of checking Lowercase with (((Some)))
+//   // if (!student.subjects.some((sub) => sub.toLowerCase() === lowerCaseSubject)) {
+//   //   student.subjects.push(subject);
+//   // }
 // }
-
 // addSubject(student, "hitstory");
 // addSubject(student, "Math");
 // console.log(student);

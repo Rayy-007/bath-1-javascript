@@ -1,40 +1,37 @@
 // Initialize the todo list
 let todos = [
   {
-    description: "Homework",
+    task: "Homework",
     completed: false,
   },
 ];
 
-// Function to add a new task
-function addTask(task) {
+/** ------- Adding a new Task ------- */
+function addTask(newTask) {
   todos.push({
-    description: task,
+    task: newTask,
     completed: false,
   });
 }
+addTask("Buy groceries");
+addTask("Complete homework");
+console.log(todos);
 
-// Function to toggle the completion status of a task
-function toggleTaskCompletion(taskDescription) {
+/** Changing Task Completed -----  */
+function toggleTaskCompletion(completedTask) {
   todos.forEach((task) => {
-    if (task.description === taskDescription) {
-      task.completed = !task.completed;
+    if (task.task === completedTask) {
+      task.completed = true;
     }
   });
 }
+toggleTaskCompletion("Homework");
+console.log(todos);
 
-// Function to remove a task
-function removeTask(taskDescription) {
-  todos = todos.filter((task) => task.description !== taskDescription);
-}
+/** ------ Removing Task ------- */
+function removeTask(removedTask) {
+  todos = todos.filter((task) => task.task !== removedTask);
+} // [""]
 
-// Example usage
-addTask("Buy groceries");
-addTask("Complete homework");
-// console.log( todos);
-
-toggleTaskCompletion("Buy groceries");
-// console.log( todos);
-
-removeTask("Complete homework");
-// console.log(todos);
+removeTask("Homework");
+console.log(todos);
