@@ -10,20 +10,28 @@ const questions = [
     answer: "JavaScript",
   },
   {
-    question: "Huh?",
+    question: "Huh3?",
     options: ["Berlin", "Madrid", "Paris", "Rome"],
     answer: "Paris",
   },
   {
-    question: "Which language runs in a web browser?",
+    question: "Huh4",
     options: ["Java", "C", "Python", "JavaScript"],
     answer: "JavaScript",
   },
 ];
 
 const quizDiv = document.getElementById("quiz");
-function loadQuiz() {
-  questions.forEach((q, index) => {
+const submitBtn = document.getElementById("submitBtn");
+const result = document.getElementById("result");
+const nextBtnEl = document.getElementById("nextBtn");
+
+let currentQuestion = 0;
+const renderQuiz = () => {
+  quizDiv.innerText = "";
+  result.innerText = "";
+  //
+  questions.slice(currentQuestion, currentQuestion + 2).forEach((q, index) => {
     const questionDiv = document.createElement("div");
     questionDiv.className = "question";
     questionDiv.innerHTML = `<p>${q.question}</p>`;
@@ -32,31 +40,50 @@ function loadQuiz() {
     optionsDiv.className = "options";
 
     q.options.forEach((option) => {
-      const label = document.createElement("label");
-      label.innerHTML = `<input type="radio" name="question${index}" value="${option}"> ${option}`;
-      optionsDiv.appendChild(label);
+      const labelEl = document.createElement("label");
+      labelEl.innerHTML = `<input type="radio" value=${option} name='question${index}'/> ${option}`;
+      optionsDiv.append(labelEl);
     });
 
-    questionDiv.appendChild(optionsDiv);
-    quizDiv.appendChild(questionDiv);
+    questionDiv.append(optionsDiv);
+    quizDiv.append(questionDiv);
   });
-}
+};
 
-function submitQuiz() {
+renderQuiz();
+
+const checkAnswer = () => {
   let score = 0;
-  questions.forEach((q, index) => {
-    const selectedOption = document.querySelector(
+
+  questions.slice(currentQuestion, currentQuestion + 2).forEach((q, index) => {
+    const userSelectedAnswer = document.querySelector(
       `input[name="question${index}"]:checked`
     );
-
-    if (selectedOption && selectedOption.value === q.answer) {
+    if (userSelectedAnswer && userSelectedAnswer.value === q.answer) {
       score++;
     }
+    result.textContent = `You scored ${score} / ${questions.length - 2}`;
   });
-  document.getElementById("result").textContent = `You scored ${score}/${
-    questions.length - 2
-  }`;
-}
 
-document.getElementById("submitBtn").addEventListener("click", submitQuiz);
-loadQuiz();
+  if (score === 2) {
+    nextBtnEl.style.display = "block";
+  }
+};
+
+submitBtn.addEventListener("click", checkAnswer);
+
+const renderNextQuiz = () => {
+  if (currentQuestion + 2 <= questions.length - 1) {
+    currentQuestion += 2;
+
+    renderQuiz();
+  } else {
+    quizDiv.innerText = "";
+
+    submitBtn.style.display = "none";
+    nextBtnEl.style.display = "none";
+    result.textContent = "Congratulations you have completed all question 🤩";
+  }
+};
+
+nextBtnEl.addEventListener("click", renderNextQuiz);
